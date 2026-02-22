@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quotation & Cutting List Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Quotation & Production Calculator</h1>
+      <p>
+        Enter the customer size and requirements to generate an instant quotation and
+        a fabrication-ready cutting list.
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>Input</h2>
+      <form id="calculator-form">
+        <div class="grid">
+          <label>
+            Series
+            <select id="series" required></select>
+          </label>
+
+          <label>
+            Sub-category
+            <select id="subcategory" required></select>
+          </label>
+
+          <label>
+            Width (mm)
+            <input id="width" type="number" min="1" step="0.1" required />
+          </label>
+
+          <label>
+            Height (mm)
+            <input id="height" type="number" min="1" step="0.1" required />
+          </label>
+
+          <label>
+            Quantity
+            <input id="quantity" type="number" min="1" step="1" value="1" required />
+          </label>
+
+          <label>
+            Color / Finish
+            <input id="color" type="text" placeholder="e.g. White matte" />
+          </label>
+
+          <label class="full-row">
+            Extra requirements
+            <textarea id="requirements" rows="3" placeholder="e.g. Safety glass, motorized control"></textarea>
+          </label>
+        </div>
+
+        <button type="submit">Calculate Quote + Production File</button>
+      </form>
+    </section>
+
+    <section id="results" class="card hidden">
+      <h2>Results</h2>
+
+      <div class="summary">
+        <h3>Quotation Summary</h3>
+        <ul>
+          <li><strong>Series:</strong> <span id="out-series"></span></li>
+          <li><strong>Sub-category:</strong> <span id="out-subcategory"></span></li>
+          <li><strong>Unit area:</strong> <span id="out-area"></span> m²</li>
+          <li><strong>Price / m²:</strong> ₹<span id="out-rate"></span></li>
+          <li><strong>Unit price:</strong> ₹<span id="out-unit-price"></span></li>
+          <li><strong>Total price:</strong> ₹<span id="out-total-price"></span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Production Cutting List (mm)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Part</th>
+              <th>Cut Width</th>
+              <th>Cut Height</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody id="cutting-list-body"></tbody>
+        </table>
+      </div>
+
+      <div class="notes">
+        <h3>Notes</h3>
+        <p id="out-notes"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
